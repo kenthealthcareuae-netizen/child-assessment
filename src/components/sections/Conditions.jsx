@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { useConfig } from '@/contexts/ConfigContext';
 
 const conditions = [
-  'Post-stroke rehabilitation and cognitive re-learning',
-  'Parkinson\'s disease - movement and mood regulation',
-  'Neurological disorders (Multiple Sclerosis, brain injuries)',
-  'Musculoskeletal injuries with behavioral impact',
-  'Movement problems related to fear and anxiety',
-  'Post-surgical treatment (joint replacement, fractures)'
+  'Autism Spectrum Disorders (ASD) assessment and support',
+  'Attention Deficit Hyperactivity Disorder (ADHD) evaluation',
+  'Speech and language development delays',
+  'Behavioral challenges and emotional regulation',
+  'Learning disabilities and academic difficulties',
+  'Developmental delays in motor skills and cognition'
 ];
 
 const SectionTitle = ({ children }) => (
@@ -30,7 +30,7 @@ const ConditionsSection = () => {
   return (
     <section id="conditions" className="py-16 md:py-24 bg-secondary/30" dir="ltr">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle dir="ltr">Conditions We Treat</SectionTitle>
+        <SectionTitle dir="ltr">Areas We Specialize In</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
           {conditions.map((condition, index) => (
             <motion.div

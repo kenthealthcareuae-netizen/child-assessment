@@ -288,11 +288,11 @@ export default function HeroSection() {
                     }}
                   >
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-8 text-center lg:text-left" dir="ltr">
-                      <span className="block text-primary">Unlock Your Child's Full Potential</span>
-                      <span className="block gradient-text-alt">With Expert Child Assessment</span>
+                      <span className="block text-primary">Expert Child Development</span>
+                      <span className="block gradient-text-alt">Assessment & Support in Dubai</span>
                     </h1>
                     <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto lg:ml-0 leading-relaxed" dir="ltr">
-                      At Kent Healthcare, our specialized child development team provides comprehensive assessments, behavioral therapy, and developmental support to help your child thrive. Expert pediatric specialists in Dubai.
+                      Our experienced developmental pediatricians and child behavioral therapists provide comprehensive assessments for children with developmental delays, behavioral challenges, and special needs. Early intervention leads to better outcomes.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start mb-10" dir="ltr">
                       <Button

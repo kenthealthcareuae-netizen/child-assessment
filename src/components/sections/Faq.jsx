@@ -9,44 +9,44 @@ import { motion } from 'framer-motion';
 
 const faqs = [
   {
-    question: 'What is child development assessment?',
+    question: 'What is a child development assessment?',
     answer:
-      'Child development assessment is a comprehensive evaluation of your child\'s physical, cognitive, social, and emotional development to identify strengths, challenges, and areas needing support or intervention.',
+      'A comprehensive evaluation of your child\'s physical, cognitive, social, and emotional development. Our developmental pediatricians identify your child\'s strengths and areas that may need support, creating a personalized plan for their growth.',
   },
   {
-    question: 'What age groups do you assess?',
+    question: 'What age groups do you work with?',
     answer:
-      'We provide assessments for children from birth to 18 years, with specialized focus on early childhood development (0-5 years) and school-age children with developmental or behavioral concerns.',
+      'We provide assessments and support for children from birth to 18 years. Our team specializes in early childhood development (0-5 years) and has extensive experience with school-age children facing developmental or behavioral challenges.',
   },
   {
-    question: 'What signs indicate my child needs assessment?',
+    question: 'When should I consider an assessment for my child?',
     answer:
-      'Common signs include delayed speech, behavioral challenges, difficulty with social interactions, learning difficulties, motor skill delays, or concerns about autism spectrum disorders.',
+      'Consider an assessment if you notice delayed speech, behavioral challenges, difficulty with social interactions, learning difficulties, motor skill delays, or if you have concerns about your child\'s development compared to their peers.',
   },
   {
-    question: 'How long does a child assessment take?',
+    question: 'How long does the assessment process take?',
     answer:
-      'Initial assessments typically take 2-3 hours, including parent interviews, direct child observation, and standardized testing. Follow-up sessions are usually 1-2 hours.',
+      'Initial assessments typically take 2-3 hours, including detailed parent interviews, direct child observation, and standardized testing. Follow-up sessions are usually 1-2 hours, depending on your child\'s needs.',
   },
   {
-    question: 'Do you provide speech therapy in Dubai?',
+    question: 'Do you offer speech therapy services?',
     answer:
-      'Yes, we offer comprehensive speech and language therapy services for children with communication delays, articulation issues, and language development needs.',
+      'Yes, our speech and language therapists provide comprehensive services for children with communication delays, articulation difficulties, and language development needs. We work closely with families to support communication growth.',
   },
   {
     question: 'What happens after the assessment?',
     answer:
-      'Following the assessment, we provide a detailed report with recommendations, create an individualized intervention plan, and connect you with appropriate specialists and services.',
+      'You\'ll receive a detailed report with our findings and recommendations. We\'ll create an individualized intervention plan and connect you with appropriate specialists and services to support your child\'s development.',
   },
   {
-    question: 'How can I book a child assessment?',
+    question: 'How do I book an assessment?',
     answer:
-      'Simply call us at +971 50 754 7326 or book through our website. Our team will guide you through the assessment process and answer any questions.',
+      'Contact us at +971 50 754 7326 or use our online booking form. Our team will guide you through the process, answer your questions, and help you prepare for your child\'s assessment.',
   },
   {
-    question: 'Do you work with special needs children?',
+    question: 'Do you work with children with special needs?',
     answer:
-      'Absolutely. We specialize in assessments and interventions for children with autism, ADHD, learning disabilities, developmental delays, and other special needs.',
+      'Absolutely. Our team has extensive experience with children with autism, ADHD, learning disabilities, developmental delays, and other special needs. We provide specialized assessments and create tailored intervention plans.',
   },
   {
     question: 'Where are you located?',

@@ -6,39 +6,39 @@ import { motion } from 'framer-motion';
 const services = [
   {
     icon: <Stethoscope className="w-10 h-10 text-primary" />,
-    title: 'Developmental Pediatrician Assessment',
+    title: 'Comprehensive Child Assessment',
     description:
-      'Comprehensive child development evaluations by certified developmental pediatricians specializing in early childhood assessment and intervention.',
+      'Thorough developmental evaluations by experienced pediatric specialists to identify your child\'s strengths, challenges, and areas for growth.',
   },
   {
     icon: <Brain className="w-10 h-10 text-primary" />,
-    title: 'Child Behavioral Therapy',
+    title: 'Behavioral Support & Therapy',
     description:
-      'Specialized behavioral interventions for children with developmental delays, autism spectrum disorders, and behavioral challenges.',
+      'Specialized interventions for children with behavioral challenges, ADHD, autism spectrum disorders, and emotional regulation difficulties.',
   },
   {
     icon: <MessageSquare className="w-10 h-10 text-primary" />,
-    title: 'Speech Therapy Dubai',
+    title: 'Speech & Language Development',
     description:
-      'Expert speech and language therapy services for children with communication delays, articulation issues, and language development needs.',
+      'Expert speech therapy services for children with communication delays, articulation difficulties, and language development needs.',
   },
   {
     icon: <Baby className="w-10 h-10 text-primary" />,
-    title: 'Early Childhood Assessment',
+    title: 'Early Intervention Programs',
     description:
-      'Comprehensive developmental screenings for toddlers and preschoolers to identify potential delays and create early intervention plans.',
+      'Specialized support for toddlers and preschoolers with developmental delays, focusing on motor skills, cognitive development, and social interaction.',
   },
   {
     icon: <Target className="w-10 h-10 text-primary" />,
-    title: 'Special Needs Center',
+    title: 'Special Needs Support',
     description:
-      'Specialized support services for children with special needs, including individualized education plans and family support programs.',
+      'Comprehensive care for children with special needs, including individualized therapy plans, family support, and educational guidance.',
   },
   {
     icon: <Award className="w-10 h-10 text-primary" />,
-    title: 'Expert Pediatric Specialists',
+    title: 'Family-Centered Care',
     description:
-      'Licensed and experienced pediatric specialists providing evidence-based assessments and interventions for optimal child development.',
+      'Collaborative approach involving parents and caregivers in the assessment process, with ongoing support and guidance for your child\'s development.',
   },
 ];
 
@@ -57,7 +57,7 @@ const SectionTitle = ({ children }) => (
 const ServicesSection = () => (
   <section id="services" className="py-16 md:py-24 bg-background" dir="ltr">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle dir="ltr">Child Assessment Services</SectionTitle>
+      <SectionTitle dir="ltr">Our Assessment & Support Services</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, idx) => (
           <motion.div
@@ -87,9 +87,9 @@ const ServicesSection = () => (
         className="mt-16 p-8 bg-gradient-to-r from-primary/80 to-accent/80 rounded-lg text-center text-white shadow-lg"
       >
         <ShieldCheck className="w-12 h-12 mx-auto mb-4 text-white" />
-        <h3 className="text-2xl font-semibold mb-2" dir="ltr">Expert Child Development Support</h3>
+        <h3 className="text-2xl font-semibold mb-2" dir="ltr">Supporting Your Child's Development Journey</h3>
         <p className="text-lg" dir="ltr">
-          Unlock your child's potential with comprehensive assessments, behavioral therapy, and developmental support - evidence-based interventions delivered by Dubai's leading pediatric specialists.
+          Our experienced team of developmental pediatricians and child behavioral therapists in Dubai provides comprehensive assessments and evidence-based interventions to help every child reach their full potential.
         </p>
       </motion.div>
     </div>

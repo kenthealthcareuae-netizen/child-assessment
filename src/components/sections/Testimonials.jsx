@@ -5,24 +5,24 @@ import { motion } from 'framer-motion';
 
 const testimonials = [
   {
-    name: 'John Smith',
+    name: 'Sarah Ahmed',
     quote:
-      'Very helpful. The session with the physiotherapist was worth it. Everything was explained in detail and how to apply it at home.',
+      'The developmental assessment helped us understand our son\'s needs better. The team was patient and thorough, providing clear guidance for his development.',
   },
   {
-    name: 'Sarah Johnson',
+    name: 'David Thompson',
     quote:
-      'Best experience and best team. Thank you so much and appreciation to you. I recommend everyone to visit Kent Healthcare.',
+      'Excellent speech therapy services. Our daughter\'s communication improved significantly after just a few sessions. Highly recommend Kent Healthcare.',
   },
   {
-    name: 'Michael Brown',
+    name: 'Fatima Al-Rashid',
     quote:
-      'The staff are cooperative and the therapists are very helpful in my child\'s treatment process.',
+      'The behavioral support team helped our child with ADHD tremendously. The strategies they provided work well at home and school.',
   },
   {
-    name: 'Emma Wilson',
+    name: 'James Wilson',
     quote:
-      'This center is exceptionally organized, with a dedicated and skilled team. Thank you for ensuring a smooth experience.',
+      'Professional and caring team. They made the assessment process comfortable for our child and provided valuable insights for his development.',
   },
 ];
 
@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-background" dir="ltr">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle dir="ltr">What Our Patients Say</SectionTitle>
+        <SectionTitle dir="ltr">What Parents Say</SectionTitle>
         {/* Limit the max width so two columns look balanced */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-5xl">
           {testimonials.map((t, idx) => (

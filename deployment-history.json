@@ -1,20 +1,6 @@
 {
   "deployments": [
     {
-      "name": "v1760221394760",
-      "timestamp": "2025-10-11T22:23:14.760Z",
-      "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
-      "backupName": "backup-2025-10-11T22-23-14-736Z",
-      "status": "success"
-    },
-    {
-      "name": "v1760221385393",
-      "timestamp": "2025-10-11T22:23:05.393Z",
-      "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
-      "backupName": "backup-2025-10-11T22-23-05-363Z",
-      "status": "success"
-    },
-    {
       "name": "v1760221310045",
       "timestamp": "2025-10-11T22:21:50.045Z",
       "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
@@ -77,6 +63,28 @@
       "github_branch": "main",
       "commit_message": "Fix deployment target - deploy to physiotherapy-en URL instead of home-physiotherapy",
       "version": "v1760683966607"
+    },
+    {
+      "project": "child-assessment",
+      "timestamp": "2025-10-20T14:56:17.070Z",
+      "status": "failed",
+      "files": 0,
+      "size": "0 bytes",
+      "github_commit": "945f180519de6ac543a21004933eaf3ae086e4b9",
+      "github_branch": "main",
+      "commit_message": "Initial commit: Child Assessment landing page with optimized content for target keywords",
+      "version": "v1760972177113"
+    },
+    {
+      "project": "child-assessment",
+      "timestamp": "2025-10-20T14:58:00.915Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "945f180519de6ac543a21004933eaf3ae086e4b9",
+      "github_branch": "main",
+      "commit_message": "Initial commit: Child Assessment landing page with optimized content for target keywords",
+      "version": "v1760972280959"
     }
   ]
 }
