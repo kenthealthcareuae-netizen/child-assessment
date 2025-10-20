@@ -1,0 +1,26 @@
+{
+  "deployments": [
+    {
+      "project": "physiotherapy",
+      "timestamp": "2025-10-13T09:47:24.809Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "f3d20b24eda11533da04590bb26f56674291c18a",
+      "github_branch": "main",
+      "commit_message": "feat: staging integration - admin panel connects to landing pages\n\n- Add media-staging.php with by-tag, all, by-tag-ordered, update-order, reorder endpoints\n- Update UnifiedAdminApp.jsx to use media-staging.php and normalize tag data\n- Update all landing page galleries to auto-detect staging hosts and use media-staging.php\n- Landing pages now reflect admin changes in real-time on staging environment\n- Admin upload → Database → Landing page display flow fully integrated",
+      "version": "v1760348844865"
+    },
+    {
+      "project": "physiotherapy",
+      "timestamp": "2025-10-13T09:51:30.976Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "f75f26546d28bf9382ea805e06927d1b75fbcd6c",
+      "github_branch": "main",
+      "commit_message": "fix: staging integration - correct admin panel and database\n\n- Replace unified-admin/index.html with staging integration\n- Add local staging database configuration (SQLite)\n- Fix staging API to use local database for testing\n- Admin panel now uses media-staging.php correctly\n- Landing pages will now reflect admin changes in staging",
+      "version": "v1760349091025"
+    }
+  ]
+}
