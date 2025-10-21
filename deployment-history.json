@@ -85,14 +85,14 @@
     },
     {
       "project": "child-assessment",
-      "timestamp": "2025-10-21T06:15:37.514Z",
+      "timestamp": "2025-10-21T07:00:18.664Z",
       "status": "success",
       "files": 9,
       "size": "492251 bytes",
-      "github_commit": "4cd42178cf949af09ffe2b3bbeaa4a7452b0f484",
+      "github_commit": "0de4cbae8a7fa7f47b0b9f2ebb1e1b4545dad944",
       "github_branch": "main",
-      "commit_message": "Update child assessment hero image with new pediatric image",
-      "version": "v1761027337557"
+      "commit_message": "Update gallery with new media and conditions image\n\n- Updated gallery config with new pediatric assessment images and videos\n- Fixed image aspect ratios to 4:5 for images and 9:16 for videos\n- Updated conditions image to KENTHEALTHCARE-OCT-04_tlxb6r.png\n- Simplified gallery component to use only Cloudinary media\n- Removed backend integration for cleaner gallery management",
+      "version": "v1761030018719"
     }
   ]
 }

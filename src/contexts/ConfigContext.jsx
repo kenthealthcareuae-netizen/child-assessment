@@ -20,9 +20,9 @@ export const ConfigProvider = ({ children }) => {
 
   const [images, setImages] = useState({
     heroImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027063/KENTHEALTHCARE-AD_Pediatric_-01_twny6n.png?v=3.0',
-    conditionsImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027060/KENTHEALTHCARE-OCT-04_tlxb6r.png',
+    conditionsImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027060/KENTHEALTHCARE-OCT-04_tlxb6r.png?v=4.0',
     logoUrl: 'https://storage.googleapis.com/hostinger-horizons-assets-prod/5b3275a5-654f-4513-a76d-2e58b21dc210/0ecae4226280d42f42e60b2d942f65b3.png',
-    version: 'v3.0' // Force cache refresh
+    version: 'v4.0' // Force cache refresh
   });
 
   const [trackingCodes, setTrackingCodes] = useState({
@@ -51,7 +51,7 @@ export const ConfigProvider = ({ children }) => {
     // Check if saved images have the new version, if not use default
     if (savedImages) {
       const parsedImages = JSON.parse(savedImages);
-      if (parsedImages.version !== 'v3.0') {
+      if (parsedImages.version !== 'v4.0') {
         // Clear old cache and use new images
         localStorage.removeItem('admin-images');
         console.log('🔄 Image cache cleared - showing new images');
