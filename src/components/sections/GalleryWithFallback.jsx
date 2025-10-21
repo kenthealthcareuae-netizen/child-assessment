@@ -1,61 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '../ui/card';
-import { Loader2 } from 'lucide-react';
 import { galleryConfig } from '../../config/gallery';
 
 const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [galleryItems, setGalleryItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [useFallback, setUseFallback] = useState(false);
 
-  // API base URL - local development
-  const API_BASE = 'http://localhost:8080/backend/api';
-
-  useEffect(() => {
-    loadGalleryItems();
-  }, [tag]);
-
-  const loadGalleryItems = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      setUseFallback(false);
-      
-      // Try to fetch from backend API first (local development)
-      console.log('Fetching gallery items for tag:', tag);
-      console.log('API URL:', `${API_BASE}/media-local.php?action=by-tag-ordered&tag=${encodeURIComponent(tag)}`);
-      const response = await fetch(`${API_BASE}/media-local.php?action=by-tag-ordered&tag=${encodeURIComponent(tag)}`);
-      const data = await response.json();
-      console.log('Gallery API response:', data);
-      
-      if (data.success && data.data && data.data.length >= 3) {
-        // Backend has 3 or more items, use backend data
-        setGalleryItems(data.data);
-        setUseFallback(false);
-      } else if (data.success && data.data && data.data.length > 0) {
-        // Backend has less than 3 items, combine with Cloudinary fallback
-        console.log(`Backend has only ${data.data.length} items, combining with Cloudinary fallback`);
-        const cloudinaryItems = galleryConfig.items || [];
-        const combinedItems = [...data.data, ...cloudinaryItems];
-        setGalleryItems(combinedItems);
-        setUseFallback(true);
-      } else {
-        // No backend data, use Cloudinary fallback
-        console.log('Backend API failed or no data, using Cloudinary fallback');
-        setUseFallback(true);
-        setGalleryItems(galleryConfig.items || []);
-      }
-    } catch (err) {
-      console.error('Backend API error, using Cloudinary fallback:', err);
-      setUseFallback(true);
-      setGalleryItems(galleryConfig.items || []);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Use gallery items directly from config - no backend integration
+  const galleryItems = galleryConfig.items;
 
   const openModal = (item) => {
     setSelectedMedia(item);
@@ -113,42 +65,6 @@ const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
     }
   }, [isModalOpen]);
 
-  if (isLoading) {
-    return (
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-[500px] border-t-2 border-blue-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-            <span className="ml-3 text-gray-600">Loading gallery...</span>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error && !useFallback) {
-    return (
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-[500px] border-t-2 border-blue-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center py-12">
-            <div className="text-red-500 mb-4">
-              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <p className="text-red-600 text-lg mb-2">Failed to load gallery</p>
-            <p className="text-gray-500 text-sm">{error}</p>
-            <button 
-              onClick={loadGalleryItems}
-              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-[500px] border-t-2 border-blue-200">
@@ -161,13 +77,6 @@ const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
           <p className="text-gray-600 text-sm sm:text-base">
             Discover our facilities and services through photos and videos
           </p>
-          {useFallback && (
-            <div className="mt-2 p-2 bg-blue-100 border border-blue-300 rounded-md">
-              <p className="text-blue-800 text-sm">
-                Showing backend media + Cloudinary fallback (less than 3 backend items)
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Gallery Grid */}
@@ -178,12 +87,16 @@ const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
               className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white rounded-lg shadow-md border border-gray-200"
               onClick={() => openModal(item)}
             >
-              <div className="relative aspect-video overflow-hidden">
-                {item.file_type === 'video' || item.type === 'video' ? (
+              <div className={`relative overflow-hidden ${
+                item.type === 'video'
+                  ? 'aspect-[9/16]' // Vertical aspect ratio for videos
+                  : 'aspect-[4/5]' // Correct aspect ratio for images (4:5)
+              }`}>
+                {item.type === 'video' ? (
                   <>
                     <img 
-                      src={item.thumbnail_path ? `http://localhost:8080/backend/${item.thumbnail_path.replace('../', '')}` : (item.thumbnail || item.src)} 
-                      alt={item.title || 'Video thumbnail'}
+                      src={item.thumbnail} 
+                      alt="Video thumbnail"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
@@ -196,8 +109,8 @@ const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
                   </>
                 ) : (
                   <img 
-                    src={item.file_path ? `http://localhost:8080/backend/${item.file_path.replace('../', '')}` : item.src} 
-                    alt={item.title || item.alt || item.original_name}
+                    src={item.src} 
+                    alt="Gallery image"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 )}
@@ -244,42 +157,29 @@ const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
             </button>
             
             <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-              <div className="aspect-video">
-                {(selectedMedia.file_type === 'video' || selectedMedia.type === 'video') ? (
+              <div className={`${
+                selectedMedia.type === 'video'
+                  ? 'aspect-[9/16] max-w-sm mx-auto' // Vertical aspect ratio for videos
+                  : 'aspect-[4/5]' // Correct aspect ratio for images (4:5)
+              }`}>
+                {selectedMedia.type === 'video' ? (
                   <video 
                     controls 
                     autoPlay 
                     className="w-full h-full object-cover"
-                    poster={selectedMedia.thumbnail_path ? `http://localhost:8080/backend/${selectedMedia.thumbnail_path.replace('../', '')}` : selectedMedia.thumbnail}
+                    poster={selectedMedia.thumbnail}
                   >
-                    <source src={selectedMedia.file_path ? `http://localhost:8080/backend/${selectedMedia.file_path.replace('../', '')}` : selectedMedia.src} type="video/webm" />
-                    <source src={selectedMedia.file_path ? `http://localhost:8080/backend/${selectedMedia.file_path.replace('../', '')}` : selectedMedia.src} type="video/mp4" />
+                    <source src={selectedMedia.src} type="video/mp4" />
                     Your browser does not support video playback
                   </video>
                 ) : (
                   <img 
-                    src={selectedMedia.file_path ? `http://localhost:8080/backend/${selectedMedia.file_path.replace('../', '')}` : selectedMedia.src} 
-                    alt={selectedMedia.title || 'Gallery image'}
+                    src={selectedMedia.src} 
+                    alt="Gallery image"
                     className="w-full h-full object-cover"
                   />
                 )}
               </div>
-              
-              {/* Media Details */}
-              {(selectedMedia.title || selectedMedia.description) && (
-                <div className="p-4 bg-white">
-                  {selectedMedia.title && (
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">
-                      {selectedMedia.title}
-                    </h3>
-                  )}
-                  {(selectedMedia.description || selectedMedia.alt) && (
-                    <p className="text-gray-600 text-sm">
-                      {selectedMedia.description || selectedMedia.alt}
-                    </p>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </div>

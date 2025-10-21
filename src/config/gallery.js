@@ -1,33 +1,42 @@
 // Gallery Configuration
-// Clean gallery with no text details - just images and videos
+// Updated gallery with new media - 3 images in first row, videos in second row
 
 export const galleryConfig = {
   items: [
+    // First row - 3 images
     {
       id: 1,
       type: 'image',
-      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760219139/DSC05032_oh0ekm.webp'
+      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027061/KENTHEALTHCARE-AD_Pediatric_-03_p3poch.png'
     },
     {
       id: 2,
       type: 'image',
-      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760219139/1_irksdj.webp'
+      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027061/KENTHEALTHCARE-POST-17_neroy9.png'
     },
     {
       id: 3,
       type: 'image',
-      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760219138/DSC00936_nedfof.webp'
+      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027061/KENTHEALTHCARE-AD_Pediatric_-02_zxhojv.png'
     },
+    // Second row - vertical videos
     {
       id: 4,
-      type: 'image',
-      src: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760219138/12Kent_Facility_Photos_zlmc1c.webp'
+      type: 'video',
+      src: 'https://res.cloudinary.com/du2afeuwp/video/upload/v1761026806/Emily-Testimonial_jxv2vk.mp4',
+      thumbnail: 'https://res.cloudinary.com/du2afeuwp/video/upload/so_0/v1761026806/Emily-Testimonial_jxv2vk.jpg'
     },
     {
       id: 5,
       type: 'video',
-      src: 'https://res.cloudinary.com/du2afeuwp/video/upload/v1760220063/Expo_High_V4_omoni3.webm',
-      thumbnail: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760220230/thumbnail_1_1.5s_tnkitf.webp'
+      src: 'https://res.cloudinary.com/du2afeuwp/video/upload/v1761026756/Virtual-Autism_fhjbuo.mp4',
+      thumbnail: 'https://res.cloudinary.com/du2afeuwp/video/upload/so_0/v1761026756/Virtual-Autism_fhjbuo.jpg'
+    },
+    {
+      id: 6,
+      type: 'video',
+      src: 'https://res.cloudinary.com/du2afeuwp/video/upload/v1761026610/Writing-slow_yr9rlh.mp4',
+      thumbnail: 'https://res.cloudinary.com/du2afeuwp/video/upload/so_0/v1761026610/Writing-slow_yr9rlh.jpg'
     }
   ]
 };

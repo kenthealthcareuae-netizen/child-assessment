@@ -1,13 +1,6 @@
 {
   "deployments": [
     {
-      "name": "v1760221176744",
-      "timestamp": "2025-10-11T22:19:36.744Z",
-      "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
-      "backupName": "backup-2025-10-11T22-19-36-713Z",
-      "status": "success"
-    },
-    {
       "name": "v1760221000193",
       "timestamp": "2025-10-11T22:16:40.193Z",
       "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
@@ -89,6 +82,17 @@
       "github_branch": "main",
       "commit_message": "Fix content mixing: Remove physiotherapy content and create proper child assessment content with natural keyword integration",
       "version": "v1760973751913"
+    },
+    {
+      "project": "child-assessment",
+      "timestamp": "2025-10-21T06:15:37.514Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "4cd42178cf949af09ffe2b3bbeaa4a7452b0f484",
+      "github_branch": "main",
+      "commit_message": "Update child assessment hero image with new pediatric image",
+      "version": "v1761027337557"
     }
   ]
 }

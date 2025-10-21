@@ -20,7 +20,7 @@ export const ConfigProvider = ({ children }) => {
 
   const [images, setImages] = useState({
     heroImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027063/KENTHEALTHCARE-AD_Pediatric_-01_twny6n.png?v=3.0',
-    conditionsImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1760199550/7_t2xmbq.webp',
+    conditionsImage: 'https://res.cloudinary.com/du2afeuwp/image/upload/v1761027060/KENTHEALTHCARE-OCT-04_tlxb6r.png',
     logoUrl: 'https://storage.googleapis.com/hostinger-horizons-assets-prod/5b3275a5-654f-4513-a76d-2e58b21dc210/0ecae4226280d42f42e60b2d942f65b3.png',
     version: 'v3.0' // Force cache refresh
   });

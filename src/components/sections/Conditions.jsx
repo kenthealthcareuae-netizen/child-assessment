@@ -54,12 +54,12 @@ const ConditionsSection = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <img
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-lg shadow-lg"
-            alt="Patient undergoing physiotherapy session"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-lg shadow-lg aspect-[4/5] object-cover"
+            alt="Areas We Specialize In - Child Assessment Services"
             src={images.conditionsImage}
           />
           <p className="mt-4 text-muted-foreground text-sm" dir="ltr">
-            Demonstration of physiotherapy techniques in action.
+            Comprehensive child assessment and developmental support services.
           </p>
         </motion.div>
       </div>

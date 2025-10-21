@@ -84,18 +84,22 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-          {galleryItems && galleryItems.length > 0 ? galleryItems.map((item) => (
+          {galleryItems && galleryItems.length > 0 ? galleryItems.map((item, index) => (
             <Card 
               key={item.id} 
               className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white rounded-lg shadow-md border border-gray-200"
               onClick={() => openModal(item)}
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className={`relative overflow-hidden ${
+                item.type === 'image' 
+                  ? 'aspect-[4/3]' // Better aspect ratio for images
+                  : 'aspect-[9/16]' // Vertical aspect ratio for videos
+              }`}>
                 {item.type === 'video' ? (
                   <>
                     <img 
                       src={item.thumbnail} 
-                      alt={item.title}
+                      alt={item.title || 'Video thumbnail'}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
@@ -109,7 +113,7 @@ const Gallery = () => {
                 ) : (
                   <img 
                     src={item.src} 
-                    alt={item.alt}
+                    alt={item.alt || 'Gallery image'}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 )}
@@ -155,7 +159,11 @@ const Gallery = () => {
             </button>
             
             <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-              <div className="aspect-video">
+              <div className={`${
+                selectedMedia.type === 'video' 
+                  ? 'aspect-[9/16] max-w-sm mx-auto' // Vertical aspect ratio for videos
+                  : 'aspect-[4/3]' // Standard aspect ratio for images
+              }`}>
                 {selectedMedia.type === 'video' ? (
                   <video 
                     controls 
@@ -163,7 +171,6 @@ const Gallery = () => {
                     className="w-full h-full object-cover"
                     poster={selectedMedia.thumbnail}
                   >
-                    <source src={selectedMedia.src} type="video/webm" />
                     <source src={selectedMedia.src} type="video/mp4" />
                     Your browser does not support video playback
                   </video>
