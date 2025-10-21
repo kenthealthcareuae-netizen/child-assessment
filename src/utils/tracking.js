@@ -1,4 +1,4 @@
-// Enhanced tracking utilities for physiotherapy landing page
+// Enhanced tracking utilities for child assessment landing page
 class TrackingManager {
   constructor() {
     this.gclid = this.getGCLID();
@@ -92,7 +92,7 @@ class TrackingManager {
       event_category: 'form_submission',
       event_label: `English_${formType}`,
       page_language: 'English',
-      page_type: 'Physiotherapy Landing Page (English)',
+      page_type: 'Child Assessment Landing Page (English)',
       gclid: this.gclid || localStorage.getItem('gclid'),
       session_id: this.sessionId,
       form_data: formData,
@@ -117,7 +117,7 @@ class TrackingManager {
     if (typeof dataLayer !== 'undefined') {
       dataLayer.push({
         event: 'fb_lead',
-        content_name: 'English Physiotherapy Contact Form',
+        content_name: 'English Child Assessment Contact Form',
         content_category: 'Healthcare',
         gclid: this.gclid || localStorage.getItem('gclid')
       });

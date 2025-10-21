@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '../ui/card';
 import { Loader2 } from 'lucide-react';
 
-const GalleryWithAPI = ({ tag = 'physiotherapy' }) => {
+const GalleryWithAPI = ({ tag = 'child-assessment' }) => {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [galleryItems, setGalleryItems] = useState([]);

@@ -70,7 +70,7 @@ function AdminApp() {
         console.error('Failed to load tags:', data.message);
         // Fallback: create default tags if API fails
         setTags([
-          { id: 1, name: 'physiotherapy', description: 'Physiotherapy related media' },
+          { id: 1, name: 'child-assessment', description: 'Child assessment related media' },
           { id: 2, name: 'home-physiotherapy', description: 'Home physiotherapy services' },
           { id: 3, name: 'behavioural-english', description: 'Behavioral English therapy' },
           { id: 4, name: 'neuro-arabic', description: 'Neuro Arabic therapy' },
@@ -81,7 +81,7 @@ function AdminApp() {
       console.error('Error loading tags:', error);
       // Fallback: create default tags if network fails
       setTags([
-        { id: 1, name: 'physiotherapy', description: 'Physiotherapy related media' },
+        { id: 1, name: 'child-assessment', description: 'Child assessment related media' },
         { id: 2, name: 'home-physiotherapy', description: 'Home physiotherapy services' },
         { id: 3, name: 'behavioural-english', description: 'Behavioral English therapy' },
         { id: 4, name: 'neuro-arabic', description: 'Neuro Arabic therapy' },
@@ -385,7 +385,7 @@ function AdminApp() {
                     // Add default tags if none are loaded
                     if (tags.length === 0) {
                       setTags([
-                        { id: 1, name: 'physiotherapy', description: 'Physiotherapy related media' },
+                        { id: 1, name: 'child-assessment', description: 'Child assessment related media' },
                         { id: 2, name: 'home-physiotherapy', description: 'Home physiotherapy services' },
                         { id: 3, name: 'behavioural-english', description: 'Behavioral English therapy' },
                         { id: 4, name: 'neuro-arabic', description: 'Neuro Arabic therapy' },

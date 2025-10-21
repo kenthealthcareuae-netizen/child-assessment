@@ -1,6 +1,6 @@
-# Physiotherapy EN - English Landing Page
+# Child Assessment EN - English Landing Page
 
-This is the English version of the Kent Healthcare physiotherapy landing page, focused on specialized physiotherapy services.
+This is the English version of the Kent Healthcare child assessment landing page, focused on specialized child assessment and development services.
 
 ## Features
 

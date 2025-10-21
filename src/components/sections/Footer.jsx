@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-4">
           <p className="text-lg font-semibold text-white" dir="ltr">Kent Healthcare</p>
-          <p className="text-sm" dir="ltr">Specialized physiotherapy for your comfort and well-being.</p>
+          <p className="text-sm" dir="ltr">Specialized child assessment and development support for your child's well-being.</p>
         </div>
         <div className="mb-4 text-sm">
           <p dir="ltr">

@@ -58,7 +58,7 @@ Book Now
       <main className="flex-grow">
         <HeroSection />
         <ServicesSection />
-        <GalleryWithFallback tag="physiotherapy" />
+        <GalleryWithFallback tag="child-assessment" />
         <ConditionsSection />
         <TestimonialsSection />
         <FaqSection />

@@ -62,8 +62,8 @@ function QuickBookingFormContent({ onBack }) {
           from_name: formData.name, 
           phone: formData.phone,
           email: formData.email||'N/A',
-          subject:'Lead from English Physiotherapy Hero Form',
-          message: `FORM METHOD: English Physiotherapy Hero Quick Booking
+          subject:'Lead from English Child Assessment Hero Form',
+          message: `FORM METHOD: English Child Assessment Hero Quick Booking
 
 LEAD DETAILS:
 Name: ${formData.name}
@@ -73,7 +73,7 @@ Message: ${formData.message || 'N/A'}
 
 PAGE INFO:
 Language: English
-Page Type: Physiotherapy Landing Page (English)
+Page Type: Child Assessment Landing Page (English)
 Page URL: ${window.location.href}
 
 TRACKING DATA:
@@ -256,7 +256,7 @@ export default function HeroSection() {
               >
                 <img
                   src={images.heroImage}
-                  alt="Physiotherapy session"
+                  alt="Child assessment session"
                   className="w-full h-full object-cover"
                 />
               </motion.div>

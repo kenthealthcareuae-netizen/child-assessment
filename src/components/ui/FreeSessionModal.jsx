@@ -123,8 +123,8 @@ const FreeSessionModal = ({ isOpen, onClose }) => {
           from_name: formData.name.trim(),
           phone: formData.phone.trim(),
           email: 'N/A',
-          subject: 'Free Session Request - English Physiotherapy Page',
-          message: `FORM METHOD: English Physiotherapy Free Session Popup
+          subject: 'Free Session Request - English Child Assessment Page',
+          message: `FORM METHOD: English Child Assessment Free Session Popup
 
 LEAD DETAILS:
 Name: ${formData.name.trim()}
@@ -133,7 +133,7 @@ Problem: ${formData.problem.trim()}
 
 PAGE INFO:
 Language: English
-Page Type: Physiotherapy Landing Page (English)
+Page Type: Child Assessment Landing Page (English)
 Page URL: ${window.location.href}
 
 TRACKING DATA:

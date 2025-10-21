@@ -1,13 +1,6 @@
 {
   "deployments": [
     {
-      "name": "v1760221000193",
-      "timestamp": "2025-10-11T22:16:40.193Z",
-      "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
-      "backupName": "backup-2025-10-11T22-16-40-166Z",
-      "status": "success"
-    },
-    {
       "name": "v1760220853798",
       "timestamp": "2025-10-11T22:14:13.798Z",
       "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
@@ -93,6 +86,17 @@
       "github_branch": "main",
       "commit_message": "Update gallery with new media and conditions image\n\n- Updated gallery config with new pediatric assessment images and videos\n- Fixed image aspect ratios to 4:5 for images and 9:16 for videos\n- Updated conditions image to KENTHEALTHCARE-OCT-04_tlxb6r.png\n- Simplified gallery component to use only Cloudinary media\n- Removed backend integration for cleaner gallery management",
       "version": "v1761030018719"
+    },
+    {
+      "project": "child-assessment",
+      "timestamp": "2025-10-21T07:02:17.683Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "90240d7c6d1b0770cab216a1dea5292db12689a3",
+      "github_branch": "main",
+      "commit_message": "Force cache refresh for conditions image\n\n- Added cache-busting parameter to conditions image URL\n- Updated version to v4.0 to force complete cache refresh\n- This should resolve the issue with old image showing in deployed page",
+      "version": "v1761030137724"
     }
   ]
 }

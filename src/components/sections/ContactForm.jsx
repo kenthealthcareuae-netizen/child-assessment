@@ -67,8 +67,8 @@ const ContactSection = () => {
           from_name: formData.name,
           phone: formData.phone,
           email: formData.email || 'Not provided',
-          subject: 'Lead from English Physiotherapy Landing Page',
-          message: `FORM METHOD: English Physiotherapy Contact Form
+          subject: 'Lead from English Child Assessment Landing Page',
+          message: `FORM METHOD: English Child Assessment Contact Form
 
 LEAD DETAILS:
 Name: ${formData.name}
@@ -78,7 +78,7 @@ Message: ${formData.message || 'N/A'}
 
 PAGE INFO:
 Language: English
-Page Type: Physiotherapy Landing Page (English)
+Page Type: Child Assessment Landing Page (English)
 Page URL: ${window.location.href}
 
 TRACKING DATA:

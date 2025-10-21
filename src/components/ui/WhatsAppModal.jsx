@@ -120,8 +120,8 @@ const WhatsAppModal = ({ isOpen, onClose, phoneNumber = '+971507547326' }) => {
           from_name: formData.name.trim(),
           phone: formData.phone.trim(),
           email: 'N/A',
-          subject: 'WhatsApp Lead - English Physiotherapy Page',
-          message: `FORM METHOD: English Physiotherapy WhatsApp Gateway
+          subject: 'WhatsApp Lead - English Child Assessment Page',
+          message: `FORM METHOD: English Child Assessment WhatsApp Gateway
 
 LEAD DETAILS:
 Name: ${formData.name.trim()}
@@ -129,7 +129,7 @@ Phone: ${formData.phone.trim()}
 
 PAGE INFO:
 Language: English
-Page Type: Physiotherapy Landing Page (English)
+Page Type: Child Assessment Landing Page (English)
 Page URL: ${window.location.href}
 
 TRACKING DATA:
@@ -201,7 +201,7 @@ Timestamp: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}`,
       });
 
       // Create WhatsApp message with pre-filled text
-      const message = `Hello, I'm ${formData.name.trim()}. I would like to inquire about physiotherapy services.`;
+      const message = `Hello, I'm ${formData.name.trim()}. I would like to inquire about child assessment services.`;
       const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
 
       // Close modal and redirect directly to WhatsApp

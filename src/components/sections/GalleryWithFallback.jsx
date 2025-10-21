@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '../ui/card';
 import { galleryConfig } from '../../config/gallery';
 
-const GalleryWithFallback = ({ tag = 'physiotherapy' }) => {
+const GalleryWithFallback = ({ tag = 'child-assessment' }) => {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
