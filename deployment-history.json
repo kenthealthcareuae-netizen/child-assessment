@@ -1,13 +1,6 @@
 {
   "deployments": [
     {
-      "name": "v1760221310045",
-      "timestamp": "2025-10-11T22:21:50.045Z",
-      "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
-      "backupName": "backup-2025-10-11T22-21-50-017Z",
-      "status": "success"
-    },
-    {
       "name": "v1760221176744",
       "timestamp": "2025-10-11T22:19:36.744Z",
       "commit": "8e56b25cfffa002e0244105600b4ffe6bba54861",
@@ -85,6 +78,17 @@
       "github_branch": "main",
       "commit_message": "Initial commit: Child Assessment landing page with optimized content for target keywords",
       "version": "v1760972280959"
+    },
+    {
+      "project": "child-assessment",
+      "timestamp": "2025-10-20T15:22:31.858Z",
+      "status": "success",
+      "files": 9,
+      "size": "492251 bytes",
+      "github_commit": "7de8c4fa57b090562eb49ecbf1430939aaac0fae",
+      "github_branch": "main",
+      "commit_message": "Fix content mixing: Remove physiotherapy content and create proper child assessment content with natural keyword integration",
+      "version": "v1760973751913"
     }
   ]
 }
