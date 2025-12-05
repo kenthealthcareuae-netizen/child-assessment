@@ -51,7 +51,7 @@ const faqs = [
   {
     question: 'Where are you located?',
     answer:
-      'Our clinic is located in central Dubai with easy access. We also provide home visits throughout the city for maximum convenience.',
+      'Our clinic is located at Kent Healthcare LLC, Nashwan Building – 208C Al Mankhool Rd – above Emirates NBD Bank – Al Raffa – Dubai (PO Box – 123657). We also provide home visits throughout the city for maximum convenience.',
   },
   {
     question: 'What have previous patients experienced?',

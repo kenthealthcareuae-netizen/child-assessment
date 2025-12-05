@@ -183,13 +183,22 @@ Timestamp: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}`,
               </a>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-6 h-6 text-accent" />
-                <span className="text-lg text-foreground" dir="ltr">Multiple clinic locations available (inquire for details)</span>
+                <a 
+                  href="https://maps.app.goo.gl/2SmhDUwTwHAJXHF59" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  dir="ltr"
+                >
+                  Kent Healthcare LLC, Nashwan Building – 208C Al Mankhool Rd – above Emirates NBD Bank – Al Raffa – Dubai<br />
+                  PO Box – 123657
+                </a>
               </div>
             </div>
             <div className="pt-6 border-t border-border">
               <h3 className="text-xl font-semibold text-primary mb-4" dir="ltr">Working Hours</h3>
               <p className="text-foreground" dir="ltr">Monday – Saturday: 9:00 AM – 8:00 PM</p>
-              <p className="text-foreground" dir="ltr">Sunday: 10:00 AM – 6:00 PM</p>
+              <p className="text-foreground" dir="ltr">Sunday: 9:00 AM – 8:00 PM</p>
             </div>
           </motion.div>
 
@@ -277,6 +286,72 @@ Timestamp: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}`,
               )}
             </Button>
           </motion.form>
+        </div>
+      </div>
+
+      {/* Find Us Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4" dir="ltr">Find Us</h2>
+              <p className="text-lg text-muted-foreground" dir="ltr">Visit our clinic in the heart of Dubai</p>
+            </div>
+            
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Location Info */}
+                <div className="text-center md:text-left">
+                  <div className="text-6xl mb-6">📍</div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4" dir="ltr">Kent Healthcare LLC</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed" dir="ltr">
+                    Nashwan Building – 208C Al Mankhool Rd<br />
+                    Above Emirates NBD Bank – Al Raffa – Dubai<br />
+                    PO Box – 123657
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                    <a 
+                      href="https://maps.app.goo.gl/2SmhDUwTwHAJXHF59" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors font-medium"
+                    >
+                      🗺️ Open in Google Maps
+                    </a>
+                    <a 
+                      href="https://www.google.com/maps/dir//Nashwan+Building,+208C+Al+Mankhool+Rd,+Dubai,+UAE" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                    >
+                      🧭 Get Directions
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Interactive Google Map */}
+                <a 
+                  href="https://maps.app.goo.gl/2SmhDUwTwHAJXHF59" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="rounded-lg overflow-hidden h-64 md:h-80 relative group cursor-pointer block"
+                >
+                  <img
+                    src="https://res.cloudinary.com/du2afeuwp/image/upload/v1761226644/Screenshot_2025-10-23_at_5.37.08_PM_hlwhqp.png"
+                    alt="Kent Healthcare Location Map"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="text-5xl mb-3">🗺️</div>
+                      <p className="text-xl font-bold" dir="ltr">Click to Open in Google Maps</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
