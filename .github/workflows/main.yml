@@ -1,292 +1,246 @@
 name: Deploy Child Assessment
- 
+
 on:
-
   workflow_dispatch:
- 
+
 concurrency:
-
   group: child-assessment-production
-
   cancel-in-progress: false
- 
+
 env:
-
   SITE_PATH: /home/child-assessment.kenthealthcare.ae
-
   DEPLOY_PORT: 5522
- 
+
 jobs:
-
   build:
-
     name: Build Website
-
     runs-on: ubuntu-latest
- 
+
     steps:
-
       - name: Checkout source code
-
         uses: actions/checkout@v4
- 
+
       - name: Setup Node.js
-
         uses: actions/setup-node@v4
-
         with:
-
           node-version: 20
-
           cache: npm
- 
+
       - name: Install dependencies
-
         run: npm ci
- 
+
       - name: Build website
-
         run: npm run build
- 
-      - name: Validate build
 
+      - name: Validate build
         run: |
+          set -e
 
           test -f dist/index.html
-
           test -f dist/admin.html
-
           test -d dist/assets
 
           echo "Build validation successful"
- 
+
       - name: Create deployment package
-
         run: |
-
           tar -czf child-assessment-dist.tar.gz -C dist .
- 
+          ls -lh child-assessment-dist.tar.gz
+
       - name: Upload deployment artifact
-
         uses: actions/upload-artifact@v4
-
         with:
-
           name: child-assessment-dist
-
           path: child-assessment-dist.tar.gz
- 
+
   deploy:
-
     name: Deploy to Production
-
     needs: build
-
     runs-on: ubuntu-latest
- 
+
     steps:
-
       - name: Download deployment artifact
-
         uses: actions/download-artifact@v4
-
         with:
-
           name: child-assessment-dist
- 
+
       - name: Configure SSH
-
         env:
-
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-
         run: |
+          set -e
 
           mkdir -p ~/.ssh
-
           chmod 700 ~/.ssh
- 
+
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/github_actions
-
           chmod 600 ~/.ssh/github_actions
- 
+
           ssh-keyscan -p 5522 -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
- 
-      - name: Upload deployment package
 
+          echo "SSH configuration completed"
+
+      - name: Test SSH connection
         env:
-
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-
         run: |
-
-          scp \
-
-            -P 5522 \
-
-            -i ~/.ssh/github_actions \
-
-            child-assessment-dist.tar.gz \
-
-            "${DEPLOY_USER}@${DEPLOY_HOST}:/tmp/child-assessment-dist.tar.gz"
- 
-      - name: Deploy website
-
-        env:
-
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-
-        run: |
+          set -e
 
           ssh \
-
             -p 5522 \
-
             -i ~/.ssh/github_actions \
+            -o BatchMode=yes \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            "echo SSH connection successful"
 
-            "${DEPLOY_USER}@${DEPLOY_HOST}" 'bash -s' << 'REMOTE'
- 
-          set -e
- 
-          SITE="/home/child-assessment.kenthealthcare.ae"
-
-          PUBLIC_HTML="$SITE/public_html"
-
-          BACKUP_ROOT="$SITE/backups"
- 
-          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-
-          BACKUP="$BACKUP_ROOT/$TIMESTAMP"
- 
-          echo "======================================"
-
-          echo "Creating website backup"
-
-          echo "======================================"
- 
-          mkdir -p "$BACKUP"
- 
-          rsync -a \
-
-            "$PUBLIC_HTML/" \
-
-            "$BACKUP/"
- 
-          echo "Backup created: $BACKUP"
- 
-          echo "======================================"
-
-          echo "Preparing deployment"
-
-          echo "======================================"
- 
-          rm -rf /tmp/child-assessment-deploy
-
-          mkdir -p /tmp/child-assessment-deploy
- 
-          tar -xzf \
-
-            /tmp/child-assessment-dist.tar.gz \
-
-            -C /tmp/child-assessment-deploy
- 
-          echo "======================================"
-
-          echo "Validating deployment files"
-
-          echo "======================================"
- 
-          test -f /tmp/child-assessment-deploy/index.html
-
-          test -f /tmp/child-assessment-deploy/admin.html
-
-          test -d /tmp/child-assessment-deploy/assets
- 
-          echo "Deployment files validated"
- 
-          echo "======================================"
-
-          echo "Deploying website"
-
-          echo "======================================"
- 
-          rsync -a --delete \
-
-            --exclude='.well-known/' \
-
-            --exclude='php-proxy.php' \
-
-            /tmp/child-assessment-deploy/ \
-
-            "$PUBLIC_HTML/"
- 
-          echo "======================================"
-
-          echo "Restoring preserved files"
-
-          echo "======================================"
- 
-          if [ -f "$BACKUP/php-proxy.php" ]; then
-
-            cp "$BACKUP/php-proxy.php" \
-
-              "$PUBLIC_HTML/php-proxy.php"
-
-          fi
- 
-          if [ -d "$BACKUP/.well-known" ]; then
-
-            rm -rf "$PUBLIC_HTML/.well-known"
- 
-            cp -a "$BACKUP/.well-known" \
-
-              "$PUBLIC_HTML/.well-known"
-
-          fi
- 
-          echo "======================================"
-
-          echo "Fixing ownership"
-
-          echo "======================================"
- 
-          chown -R child4516:child4516 "$PUBLIC_HTML"
- 
-          echo "======================================"
-
-          echo "Cleaning temporary files"
-
-          echo "======================================"
- 
-          rm -rf /tmp/child-assessment-deploy
-
-          rm -f /tmp/child-assessment-dist.tar.gz
- 
-          echo "======================================"
-
-          echo "Deployment completed successfully"
-
-          echo "======================================"
- 
-          REMOTE
- 
-      - name: Verify website
-
+      - name: Upload deployment package
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
+          set -e
 
-          sleep 5
- 
-          curl -fIL \
+          scp \
+            -P 5522 \
+            -i ~/.ssh/github_actions \
+            child-assessment-dist.tar.gz \
+            "$DEPLOY_USER@$DEPLOY_HOST:/tmp/child-assessment-dist.tar.gz"
 
+          echo "Deployment package uploaded"
+
+      - name: Deploy website
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -e
+
+          ssh \
+            -p 5522 \
+            -i ~/.ssh/github_actions \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            'bash -s' <<'REMOTE_SCRIPT'
+
+          set -e
+
+          SITE="/home/child-assessment.kenthealthcare.ae"
+          PUBLIC_HTML="$SITE/public_html"
+          BACKUP_ROOT="$SITE/backups"
+
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          BACKUP="$BACKUP_ROOT/$TIMESTAMP"
+          DEPLOY_DIR="/tmp/child-assessment-deploy"
+
+          echo "=========================================="
+          echo "Child Assessment Deployment"
+          echo "=========================================="
+
+          echo "Checking production directory..."
+
+          if [ ! -d "$PUBLIC_HTML" ]; then
+            echo "ERROR: Production directory does not exist:"
+            echo "$PUBLIC_HTML"
+            exit 1
+          fi
+
+          echo "Production directory:"
+          echo "$PUBLIC_HTML"
+
+          echo "=========================================="
+          echo "Creating backup"
+          echo "=========================================="
+
+          mkdir -p "$BACKUP"
+
+          rsync -a \
+            "$PUBLIC_HTML/" \
+            "$BACKUP/"
+
+          echo "Backup created:"
+          echo "$BACKUP"
+
+          echo "=========================================="
+          echo "Preparing deployment files"
+          echo "=========================================="
+
+          rm -rf "$DEPLOY_DIR"
+          mkdir -p "$DEPLOY_DIR"
+
+          tar -xzf \
+            /tmp/child-assessment-dist.tar.gz \
+            -C "$DEPLOY_DIR"
+
+          echo "=========================================="
+          echo "Validating deployment files"
+          echo "=========================================="
+
+          if [ ! -f "$DEPLOY_DIR/index.html" ]; then
+            echo "ERROR: index.html missing"
+            exit 1
+          fi
+
+          if [ ! -f "$DEPLOY_DIR/admin.html" ]; then
+            echo "ERROR: admin.html missing"
+            exit 1
+          fi
+
+          if [ ! -d "$DEPLOY_DIR/assets" ]; then
+            echo "ERROR: assets directory missing"
+            exit 1
+          fi
+
+          echo "Deployment files validated successfully"
+
+          echo "=========================================="
+          echo "Deploying website"
+          echo "=========================================="
+
+          rsync -a --delete \
+            --exclude=".well-known/" \
+            --exclude="php-proxy.php" \
+            "$DEPLOY_DIR/" \
+            "$PUBLIC_HTML/"
+
+          echo "Website files deployed"
+
+          echo "=========================================="
+          echo "Setting ownership"
+          echo "=========================================="
+
+          chown -R child4516:child4516 "$PUBLIC_HTML"
+
+          echo "Ownership updated"
+
+          echo "=========================================="
+          echo "Cleaning temporary files"
+          echo "=========================================="
+
+          rm -rf "$DEPLOY_DIR"
+          rm -f /tmp/child-assessment-dist.tar.gz
+
+          echo "Temporary files removed"
+
+          echo "=========================================="
+          echo "Deployment completed successfully"
+          echo "=========================================="
+
+          REMOTE_SCRIPT
+
+      - name: Verify website
+        run: |
+          set -e
+
+          echo "Checking website..."
+
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
             --max-time 30 \
-https://child-assessment.kenthealthcare.ae/
- 
+            https://child-assessment.kenthealthcare.ae/ \
+            -o /dev/null
+
           echo "Website verification successful"
-Child Assessment & Development Services Dubai | Kent Healthcare
- 
